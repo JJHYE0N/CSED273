@@ -1,0 +1,55 @@
+/* CSED273 lab1 experiment 2_iii */
+/* lab1_2_iii.v */
+
+
+module lab1_2_iii(outAND, outOR, outNOT, inA, inB);
+    output wire outAND, outOR, outNOT;
+    input wire inA, inB;
+
+    AND(outAND, inA, inB);
+    OR(outOR, inA, inB);
+    NOT(outNOT, inA);
+
+endmodule
+
+
+/* Implement AND, OR, and NOT modules with {NAND}
+ * You are only allowed to wire modules below
+ * i.e.) No and, or, not, etc. Only nand, AND, OR, NOT are available*/
+module AND(outAND, inA, inB);
+    output wire outAND;
+    input wire inA, inB; 
+
+    ////////////////////////
+    /* Add your code here */
+    wire A;
+    nand(A,inA,inB);
+    nand(outAND,A,A);
+    ////////////////////////
+
+endmodule
+
+module OR(outOR, inA, inB);
+    output wire outOR;
+    input wire inA, inB; 
+    
+    ////////////////////////
+    /* Add your code here */
+    wire A,B;
+    nand(A,inA,inA);
+    nand(B,inB,inB);
+    nand(outOR,A,B);
+    ////////////////////////
+
+endmodule
+
+module NOT(outNOT, inA);
+    output wire outNOT;
+    input wire inA; 
+
+    ////////////////////////
+    /* Add your code here */
+    nand(outNOT,inA,inA);
+    ////////////////////////
+
+endmodule
